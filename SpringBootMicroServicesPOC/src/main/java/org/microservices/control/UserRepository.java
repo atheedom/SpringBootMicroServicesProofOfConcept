@@ -1,10 +1,9 @@
 package org.microservices.control;
 
 import org.microservices.entity.User;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-interface UserRepository extends CrudRepository<User, Long>{
 
-	//User findOne(Long id);
+public interface UserRepository extends MongoRepository<User, Long>{
 
 }

@@ -3,39 +3,37 @@ package org.microservices.entity;
 import java.io.Serializable;
 import java.sql.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+@Document(collection = "users")
 public class User implements Serializable{
 
 	private static final long serialVersionUID = 8700559038776469146L;
 
-	@Id
-	@GeneratedValue
-	@Column(name = "key")
-	Long id;
-	
+	int userId;
 	String username;
-	@Column(name = "first_name")
 	String firstname;
-	@Column(name = "last_name")
 	String lastname;
-	@Column(name = "created_date")
 	Date createdDate;
-	@Column(name = "last_accessed")
 	Date lastAccessed;
-	@Column(name = "is_active")	
 	Boolean isActive = Boolean.TRUE;
+	
+	public User(){}
+		
+	public User(String username, String firstname, String lastname){
+		this.username = username;
+		this.firstname =  firstname;
+		this.lastname = lastname;
+	}
+		
 
-	public Long getId() {
-		return id;
+	public int getId() {
+		return userId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(int id) {
+		this.userId = id;
 	}
 
 	public String getUsername() {
@@ -88,7 +86,7 @@ public class User implements Serializable{
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", firstname="
+		return "User [id=" + userId + ", username=" + username + ", firstname="
 				+ firstname + ", lastname=" + lastname + ", createdDate="
 				+ createdDate + ", lastAccessed=" + lastAccessed
 				+ ", isActive=" + isActive + "]";
@@ -102,7 +100,7 @@ public class User implements Serializable{
 				+ ((createdDate == null) ? 0 : createdDate.hashCode());
 		result = prime * result
 				+ ((firstname == null) ? 0 : firstname.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + userId;
 		result = prime * result
 				+ ((isActive == null) ? 0 : isActive.hashCode());
 		result = prime * result
@@ -133,10 +131,7 @@ public class User implements Serializable{
 				return false;
 		} else if (!firstname.equals(other.firstname))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (userId != other.userId)
 			return false;
 		if (isActive == null) {
 			if (other.isActive != null)
@@ -160,9 +155,6 @@ public class User implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
-	
-	
+
 	
 }

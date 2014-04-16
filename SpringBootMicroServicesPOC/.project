@@ -3,6 +3,7 @@
 	<name>SpringBootMicroServicesPOC</name>
 	<comment></comment>
 	<projects>
+		<project>SpringBootFrontend</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
