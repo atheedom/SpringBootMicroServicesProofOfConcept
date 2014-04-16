@@ -1,0 +1,1 @@
+insert into user(username, first_name, last_name, created_date, last_accessed, is_active) values ('atheedom', 'Alex', 'Theedom', now(), now(), 1)
