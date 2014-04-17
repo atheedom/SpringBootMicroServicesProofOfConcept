@@ -45,19 +45,11 @@ public class Application {
     	return new InitializingBean(){
 			@Override
 			public void afterPropertiesSet() throws Exception {
-		    	repository.save(new User("jsmith","John","Smith"));
-		    	repository.save(new User("atheedom","Alex","Theedom"));
-		    	System.out.println(repository.findAll());		
+//		    	repository.save(new User("jsmith","John","Smith"));
+//		    	repository.save(new User("atheedom","Alex","Theedom"));
+//		    	System.out.println(repository.findAll());		
 			}		
     	};
     }
 
-
-//	@Override
-//	public void afterPropertiesSet() throws Exception {
-//    	repository.save(new User("jsmith","John","Smith"));
-//    	repository.save(new User("atheedom","Alex","Theedom"));
-//    	System.out.println(repository.findAll());
-//		
-//	}
 }

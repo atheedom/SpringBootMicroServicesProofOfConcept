@@ -1,9 +1,10 @@
 package org.microservices.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "users")
@@ -11,29 +12,21 @@ public class User implements Serializable{
 
 	private static final long serialVersionUID = 8700559038776469146L;
 
-	int userId;
+	@Id @Indexed
 	String username;
 	String firstname;
 	String lastname;
+	String email;
 	Date createdDate;
-	Date lastAccessed;
 	Boolean isActive = Boolean.TRUE;
 	
 	public User(){}
 		
-	public User(String username, String firstname, String lastname){
+	public User(String username, String firstname, String lastname, String email){
 		this.username = username;
 		this.firstname =  firstname;
 		this.lastname = lastname;
-	}
-		
-
-	public int getId() {
-		return userId;
-	}
-
-	public void setId(int id) {
-		this.userId = id;
+		this.email = email;
 	}
 
 	public String getUsername() {
@@ -60,20 +53,20 @@ public class User implements Serializable{
 		this.lastname = lastname;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public Date getCreatedDate() {
 		return createdDate;
 	}
 
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
-	}
-
-	public Date getLastAccessed() {
-		return lastAccessed;
-	}
-
-	public void setLastAccessed(Date lastAccessed) {
-		this.lastAccessed = lastAccessed;
 	}
 
 	public Boolean getIsActive() {
@@ -83,28 +76,18 @@ public class User implements Serializable{
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + userId + ", username=" + username + ", firstname="
-				+ firstname + ", lastname=" + lastname + ", createdDate="
-				+ createdDate + ", lastAccessed=" + lastAccessed
-				+ ", isActive=" + isActive + "]";
-	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
 				+ ((createdDate == null) ? 0 : createdDate.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result
 				+ ((firstname == null) ? 0 : firstname.hashCode());
-		result = prime * result + userId;
 		result = prime * result
 				+ ((isActive == null) ? 0 : isActive.hashCode());
-		result = prime * result
-				+ ((lastAccessed == null) ? 0 : lastAccessed.hashCode());
 		result = prime * result
 				+ ((lastname == null) ? 0 : lastname.hashCode());
 		result = prime * result
@@ -126,22 +109,20 @@ public class User implements Serializable{
 				return false;
 		} else if (!createdDate.equals(other.createdDate))
 			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
 		if (firstname == null) {
 			if (other.firstname != null)
 				return false;
 		} else if (!firstname.equals(other.firstname))
 			return false;
-		if (userId != other.userId)
-			return false;
 		if (isActive == null) {
 			if (other.isActive != null)
 				return false;
 		} else if (!isActive.equals(other.isActive))
-			return false;
-		if (lastAccessed == null) {
-			if (other.lastAccessed != null)
-				return false;
-		} else if (!lastAccessed.equals(other.lastAccessed))
 			return false;
 		if (lastname == null) {
 			if (other.lastname != null)
@@ -156,5 +137,11 @@ public class User implements Serializable{
 		return true;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", firstname=" + firstname
+				+ ", lastname=" + lastname + ", email=" + email
+				+ ", createdDate=" + createdDate + ", isActive=" + isActive
+				+ "]";
+	}
 }
