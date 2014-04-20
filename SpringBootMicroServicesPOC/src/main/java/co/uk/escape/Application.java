@@ -1,7 +1,5 @@
-package org.microservices;
+package co.uk.escape;
 
-import org.microservices.entity.User;
-import org.microservices.control.UserRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -11,6 +9,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import co.uk.escape.domain.User;
+import co.uk.escape.domain.UserRepository;
 
 @Configuration
 @ComponentScan

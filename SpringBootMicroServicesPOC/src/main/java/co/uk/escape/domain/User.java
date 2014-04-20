@@ -1,4 +1,4 @@
-package org.microservices.entity;
+package co.uk.escape.domain;
 
 import java.io.Serializable;
 import java.util.Date;

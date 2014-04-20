@@ -1,9 +1,7 @@
-package org.microservices.boundary;
+package co.uk.escape.web;
 
 import java.util.List;
 
-import org.microservices.control.UserRepository;
-import org.microservices.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import co.uk.escape.domain.User;
+import co.uk.escape.domain.UserRepository;
+import co.uk.escape.service.UserService;
 
 @RestController
 @RequestMapping("/user")

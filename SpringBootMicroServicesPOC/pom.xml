@@ -3,12 +3,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.microservices</groupId>
-	<artifactId>SpringBootMicroServicesPOC</artifactId>
+	<groupId>co.uk.escape</groupId>
+	<artifactId>UserService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>SpringBootMicroServicesPOC</name>
-	<description>Spring Boot Micro Services POC</description>
+	<name>UserService</name>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -42,7 +41,7 @@
 	</dependencies>
 
 	<properties>
-		<start-class>org.microservices.Application</start-class>
+		<start-class>co.uk.escape.Application</start-class>
 		<java.version>1.7</java.version>
 	</properties>
 
@@ -55,4 +54,6 @@
 		</plugins>
 	</build>
 
+	<description>User Service Micro Service</description>
+	<packaging>war</packaging>
 </project>
