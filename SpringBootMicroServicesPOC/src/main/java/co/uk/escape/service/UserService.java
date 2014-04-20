@@ -20,11 +20,11 @@ public class UserService {
 		this.userRepository = userRepository;
 	}
 
-	public User findOne(Long id) {
+	public User getUserById(Long id) {
 		return userRepository.findOne(id);
 	}
 
-	public User findOne(String username) {
+	public User getUserByUsername(String username) {
 		return userRepository.findByUsername(username);
 	}
 

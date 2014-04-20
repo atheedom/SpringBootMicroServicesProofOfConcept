@@ -7,22 +7,23 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import co.uk.escape.domain.User;
 import co.uk.escape.domain.UserRepository;
 
+@EnableWebMvc
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
 public class Application {
 
 	@Autowired
-	UserRepository repository;
+	UserRepository userRepository;
 	
     public static void main(String[] args) {
-        //SpringApplication.run(Application.class, args);
     	SpringApplication app = new SpringApplication(Application.class);
     	app.setShowBanner(false); // removes the spring leaf
     	app.run(args);
@@ -42,13 +43,13 @@ public class Application {
     
     
     @Bean
-    public InitializingBean populateTestData(final UserRepository repository){   	
+    public InitializingBean populateTestData(final UserRepository userRepository){   	
     	return new InitializingBean(){
 			@Override
 			public void afterPropertiesSet() throws Exception {
-//		    	repository.save(new User("jsmith","John","Smith"));
-//		    	repository.save(new User("atheedom","Alex","Theedom"));
-//		    	System.out.println(repository.findAll());		
+		    	userRepository.save(new User("jsmith","John","Smith", "jsmaith@hotmail.com"));
+		    	userRepository.save(new User("atheedom","Alex","Theedom", "atheedom@gmail.com"));
+		    	System.out.println(userRepository.findAll());		
 			}		
     	};
     }

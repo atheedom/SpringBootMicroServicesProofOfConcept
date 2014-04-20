@@ -28,7 +28,7 @@ class UserRestController {
   
   @RequestMapping(method=RequestMethod.GET, value = "/{username}")
   public User getUser(@PathVariable String username) {
-    return userService.findOne(username);
+    return userService.getUserByUsername(username);
   }
   
   @RequestMapping(method=RequestMethod.GET)
