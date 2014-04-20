@@ -1,6 +1,5 @@
-package org.microservices.control;
+package co.uk.escape.domain;
 
-import org.microservices.entity.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 

@@ -1,11 +1,12 @@
-package org.microservices.boundary;
+package co.uk.escape.service;
 
 import java.util.List;
 
-import org.microservices.control.UserRepository;
-import org.microservices.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import co.uk.escape.domain.User;
+import co.uk.escape.domain.UserRepository;
 
 @Service
 public class UserService {	
