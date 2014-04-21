@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.uk.escape.domain.User;
+import co.uk.escape.domain.UserNotFoundException;
 import co.uk.escape.domain.UserRepository;
 
 @Service
@@ -24,7 +25,14 @@ public class UserService {
 		return userRepository.findOne(id);
 	}
 
-	public User getUserByUsername(String username) {
+	public User getUserByUsername(String username) throws UserNotFoundException{
+		
+		User user = userRepository.findByUsername(username);
+		
+		if (user == null) {
+			throw new UserNotFoundException();
+		}
+		
 		return userRepository.findByUsername(username);
 	}
 
@@ -32,7 +40,7 @@ public class UserService {
 		return userRepository.findAll();
 	}
 
-	public void saveUser(User user) {
-		userRepository.save(user);
+	public User saveUser(User user) {
+		return userRepository.save(user);
 	}
 }
