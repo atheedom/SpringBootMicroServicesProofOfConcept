@@ -1,4 +1,4 @@
-package org.microservices;
+package co.uk.escape;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
